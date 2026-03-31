@@ -60,6 +60,16 @@ Node* minNode(Node* root){
     return root;
 }
 
+int height(Node* root){
+    if(!root) return 0;
+
+    int leftHeight = height(root->left);
+    int rightHeight = height(root->right);
+
+    return max(leftHeight, rightHeight) + 1;
+}
+
+
 Node* deleteNode(Node* root, int val){
     if(!root) return nullptr;
     if(val < root->data){
@@ -106,6 +116,8 @@ int main(){
         cin>>val;
         root = insert(root,val);
     }
+
+    cout<<"Height of the tree is: "<<height(root)<<endl;
 
     cout<<"\nInorder Traversal : ";
     inorder(root);
